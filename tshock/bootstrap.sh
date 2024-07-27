@@ -2,11 +2,9 @@
 
 echo "\nBootstrap:\nworld_file_name=$WORLD_FILENAME\nconfigpath=$CONFIGPATH\nlogpath=$LOGPATH\n"
 
-# Copy plugins if the folder is empty (like on first run)
-if [ -z "$(ls -A /tshock/ServerPlugins)" ]; then
-  echo "Copying plugins..."
-  cp /plugins/* /tshock/ServerPlugins
-fi
+# Copy plugins
+echo "Copying plugins..."
+cp /plugins/* /tshock/ServerPlugins
 
 
 if [ $(jq -r '.Settings.StorageType' $CONFIGPATH/config.json) = "mysql" ]; then
